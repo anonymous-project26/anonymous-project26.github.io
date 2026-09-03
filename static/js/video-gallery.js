@@ -2,7 +2,7 @@
   'use strict';
 
   const data = window.DEXCOACH_VIDEOS;
-  const state = { mode: 'seen', selectedId: data.seen[0].id };
+  const state = { mode: 'seen', selectedId: data.seen[0].id, testIndex: 0 };
 
   const elements = {
     tabs: Array.from(document.querySelectorAll('.mode-tab')),
@@ -12,6 +12,7 @@
     videoHeading: document.getElementById('video-heading'),
     videoCount: document.getElementById('video-count'),
     selectionDescription: document.getElementById('selection-description'),
+    testList: document.getElementById('test-list'),
     videoGrid: document.getElementById('video-grid')
   };
 
@@ -26,6 +27,7 @@
   function selectMode(mode) {
     state.mode = mode;
     state.selectedId = currentItems()[0].id;
+    state.testIndex = 0;
     render();
     document.getElementById('videos').scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
@@ -63,45 +65,75 @@
 
       button.addEventListener('click', () => {
         state.selectedId = item.id;
+        state.testIndex = 0;
         render();
       });
       elements.selectionList.appendChild(button);
     });
   }
 
+  function renderTestButtons() {
+    const selected = currentSelection();
+    elements.testList.replaceChildren();
+
+    if (state.mode !== 'seen') {
+      elements.testList.classList.add('is-hidden');
+      return;
+    }
+
+    elements.testList.classList.remove('is-hidden');
+    const label = document.createElement('span');
+    label.className = 'test-list-label';
+    label.textContent = 'Choose a test';
+    elements.testList.appendChild(label);
+
+    selected.videos.forEach((videoInfo, index) => {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'test-button' + (index === state.testIndex ? ' is-selected' : '');
+      button.textContent = 'Testing ' + (index + 1);
+      button.setAttribute('aria-pressed', index === state.testIndex ? 'true' : 'false');
+      button.addEventListener('click', () => {
+        state.testIndex = index;
+        render();
+      });
+      elements.testList.appendChild(button);
+    });
+  }
+
   function renderVideos() {
     const selected = currentSelection();
-    const videos = state.mode === 'seen'
-      ? selected.videos
-      : [{ label: 'Test video', src: selected.src }];
+    const videoInfo = state.mode === 'seen'
+      ? selected.videos[state.testIndex]
+      : { label: 'Test video', src: selected.src };
 
     elements.videoHeading.textContent = state.mode === 'seen' ? selected.label : selected.label;
-    elements.videoCount.textContent = videos.length + (videos.length === 1 ? ' video' : ' videos');
+    elements.videoCount.textContent = state.mode === 'seen'
+      ? 'Testing ' + (state.testIndex + 1) + ' of ' + selected.videos.length
+      : '1 video';
     elements.selectionDescription.textContent = state.mode === 'seen'
-      ? selected.label + ' — testing videos'
+      ? selected.label + ' — ' + videoInfo.label
       : selected.name;
     elements.videoGrid.replaceChildren();
 
-    videos.forEach((videoInfo) => {
-      const card = document.createElement('article');
-      card.className = 'video-card';
+    const card = document.createElement('article');
+    card.className = 'video-card';
 
-      const video = document.createElement('video');
-      video.className = 'test-video';
-      video.controls = true;
-      video.preload = 'metadata';
-      video.playsInline = true;
-      video.src = videoInfo.src;
-      video.setAttribute('aria-label', selected.label + ' ' + videoInfo.label);
+    const video = document.createElement('video');
+    video.className = 'test-video';
+    video.controls = true;
+    video.preload = 'metadata';
+    video.playsInline = true;
+    video.src = videoInfo.src;
+    video.setAttribute('aria-label', selected.label + ' ' + videoInfo.label);
 
-      const caption = document.createElement('div');
-      caption.className = 'video-caption';
-      caption.textContent = videoInfo.label;
+    const caption = document.createElement('div');
+    caption.className = 'video-caption';
+    caption.textContent = videoInfo.label;
 
-      card.appendChild(video);
-      card.appendChild(caption);
-      elements.videoGrid.appendChild(card);
-    });
+    card.appendChild(video);
+    card.appendChild(caption);
+    elements.videoGrid.appendChild(card);
   }
 
   function render() {
@@ -111,6 +143,7 @@
       tab.setAttribute('aria-selected', active ? 'true' : 'false');
     });
     renderList();
+    renderTestButtons();
     renderVideos();
   }
 

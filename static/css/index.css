@@ -208,8 +208,9 @@ body {
   margin: 0 auto 1.25rem;
   color: var(--dexcoach-ink);
   font-size: clamp(2.6rem, 6vw, 5.5rem) !important;
-  line-height: 1.03;
+  line-height: 1.08;
   letter-spacing: -0.065em;
+  overflow-wrap: anywhere;
 }
 
 .hero-copy {
@@ -340,9 +341,9 @@ body {
 }
 
 .selection-item {
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
-  justify-content: space-between;
   gap: 0.75rem;
   width: 100%;
   padding: 0.8rem 0.9rem;
@@ -367,7 +368,16 @@ body {
 
 .selection-item-label { flex: 0 0 auto; font-weight: 750; }
 .selection-item-count { color: var(--dexcoach-accent); font-size: 0.85rem; font-weight: 800; }
-.selection-item-name { min-width: 0; overflow: hidden; color: #8b94a8; font-size: 0.75rem; text-overflow: ellipsis; white-space: nowrap; }
+.selection-item-name {
+  grid-column: 1 / -1;
+  min-width: 0;
+  overflow: hidden;
+  color: #8b94a8;
+  font-size: 0.75rem;
+  line-height: 1.25;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 
 .section-heading {
   display: flex;
@@ -388,9 +398,7 @@ body {
 .selection-description { margin-top: -0.8rem; margin-bottom: 1.5rem; }
 
 .video-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1.25rem;
+  max-width: 900px;
 }
 
 .video-card {
@@ -415,6 +423,41 @@ body {
   font-size: 0.9rem;
   font-weight: 750;
 }
+
+.test-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.test-list-label {
+  flex-basis: 100%;
+  margin-bottom: 0.1rem;
+  color: #687187;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.test-button {
+  padding: 0.55rem 0.8rem;
+  border: 1px solid #dfe4ef;
+  border-radius: 9px;
+  color: #687187;
+  background: white;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.84rem;
+  font-weight: 750;
+  transition: border-color 160ms ease, color 160ms ease, background 160ms ease;
+}
+
+.test-button:hover { border-color: var(--dexcoach-accent); color: var(--dexcoach-accent); }
+.test-button.is-selected { border-color: var(--dexcoach-ink); color: white; background: var(--dexcoach-ink); }
+.is-hidden { display: none !important; }
 
 .about-panel {
   max-width: 760px;
