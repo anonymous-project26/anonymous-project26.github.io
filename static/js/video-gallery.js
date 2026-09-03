@@ -30,7 +30,7 @@
     items.forEach((item) => {
       const option = document.createElement('option');
       option.value = item.id;
-      option.textContent = state.mode === 'seen' ? item.label : item.label + ' — ' + item.name;
+      option.textContent = state.mode === 'seen' ? item.label : item.name;
       elements.itemSelect.appendChild(option);
     });
 
