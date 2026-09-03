@@ -35,17 +35,8 @@
             <p class="eyebrow">DexHand test video explorer</p>
             <h1 class="title is-1 publication-title">DexCoach</h1>
             <p class="subtitle is-4 hero-copy">
-              Browse the selected test videos by whether the object was seen
-              during evaluation.
+              Browse one test video at a time using the controls on the right.
             </p>
-            <div class="mode-tabs" role="tablist" aria-label="Dataset split">
-              <button class="mode-tab is-active" type="button" data-mode="seen" role="tab" aria-selected="true">
-                Seen
-              </button>
-              <button class="mode-tab" type="button" data-mode="unseen" role="tab" aria-selected="false">
-                Unseen
-              </button>
-            </div>
           </div>
         </div>
       </div>
@@ -55,27 +46,45 @@
   <section class="section video-section" id="videos">
     <div class="container is-max-desktop">
       <div class="columns is-variable is-6">
-        <aside class="column is-one-quarter">
-          <p class="eyebrow">Select a group</p>
-          <h2 class="title is-4" id="list-heading">Seen shapes</h2>
-          <p class="list-description" id="list-description">
-            Choose one of the ten seen shapes.
-          </p>
-          <div class="selection-list" id="selection-list"></div>
-        </aside>
-
-        <main class="column" aria-live="polite">
+        <main class="column is-two-thirds" aria-live="polite">
           <div class="section-heading">
             <div>
-              <p class="eyebrow">Selected videos</p>
+              <p class="eyebrow">Selected video</p>
               <h2 class="title is-3" id="video-heading">Box</h2>
             </div>
             <span class="video-count" id="video-count"></span>
           </div>
           <p class="selection-description" id="selection-description"></p>
-          <div class="test-list" id="test-list" aria-label="Testing videos"></div>
           <div class="video-grid" id="video-grid"></div>
         </main>
+
+        <aside class="column is-one-third controls-column">
+          <div class="control-panel">
+            <p class="eyebrow">Choose a video</p>
+            <div class="field">
+              <label class="label" for="mode-select">Dataset</label>
+              <div class="select is-fullwidth">
+                <select id="mode-select">
+                  <option value="seen">Seen</option>
+                  <option value="unseen">Unseen</option>
+                </select>
+              </div>
+            </div>
+            <div class="field">
+              <label class="label" id="item-select-label" for="item-select">Shape</label>
+              <div class="select is-fullwidth">
+                <select id="item-select"></select>
+              </div>
+            </div>
+            <div class="field" id="test-select-field">
+              <label class="label" for="test-select">Testing video</label>
+              <div class="select is-fullwidth">
+                <select id="test-select"></select>
+              </div>
+            </div>
+            <p class="control-hint" id="control-hint"></p>
+          </div>
+        </aside>
       </div>
     </div>
   </section>
@@ -86,10 +95,9 @@
         <p class="eyebrow">About this page</p>
         <h2 class="title is-3">A focused view of the test set.</h2>
         <p>
-          Select <strong>Seen</strong> to browse the ten shape groups and their
-          testing videos. Select <strong>Unseen</strong> to browse the current
-          set of unseen-object videos. More videos can be added later without
-          changing the page structure.
+          Select <strong>Seen</strong> or <strong>Unseen</strong>, then use the
+          dropdowns to choose the object and one testing video. More videos can
+          be added later without changing the page structure.
         </p>
       </div>
     </div>

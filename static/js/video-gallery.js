@@ -5,14 +5,15 @@
   const state = { mode: 'seen', selectedId: data.seen[0].id, testIndex: 0 };
 
   const elements = {
-    tabs: Array.from(document.querySelectorAll('.mode-tab')),
-    listHeading: document.getElementById('list-heading'),
-    listDescription: document.getElementById('list-description'),
-    selectionList: document.getElementById('selection-list'),
+    modeSelect: document.getElementById('mode-select'),
+    itemSelect: document.getElementById('item-select'),
+    itemSelectLabel: document.getElementById('item-select-label'),
+    testSelect: document.getElementById('test-select'),
+    testSelectField: document.getElementById('test-select-field'),
+    controlHint: document.getElementById('control-hint'),
     videoHeading: document.getElementById('video-heading'),
     videoCount: document.getElementById('video-count'),
     selectionDescription: document.getElementById('selection-description'),
-    testList: document.getElementById('test-list'),
     videoGrid: document.getElementById('video-grid')
   };
 
@@ -24,96 +25,56 @@
     return currentItems().find((item) => item.id === state.selectedId) || currentItems()[0];
   }
 
-  function selectMode(mode) {
-    state.mode = mode;
-    state.selectedId = currentItems()[0].id;
-    state.testIndex = 0;
-    render();
-    document.getElementById('videos').scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
-
-  function renderList() {
+  function populateItemSelect() {
     const items = currentItems();
-    elements.listHeading.textContent = state.mode === 'seen' ? 'Seen shapes' : 'Unseen objects';
-    elements.listDescription.textContent = state.mode === 'seen'
-      ? 'Choose one of the ten seen shapes.'
-      : 'Choose an unseen object to view its test video.';
-    elements.selectionList.replaceChildren();
+    elements.itemSelect.replaceChildren();
+    elements.itemSelectLabel.textContent = state.mode === 'seen' ? 'Shape' : 'Object';
 
     items.forEach((item) => {
-      const button = document.createElement('button');
-      button.type = 'button';
-      button.className = 'selection-item' + (item.id === state.selectedId ? ' is-selected' : '');
-      button.setAttribute('aria-pressed', item.id === state.selectedId ? 'true' : 'false');
-
-      const label = document.createElement('span');
-      label.className = 'selection-item-label';
-      label.textContent = item.label;
-      button.appendChild(label);
-
-      if (state.mode === 'seen') {
-        const count = document.createElement('span');
-        count.className = 'selection-item-count';
-        count.textContent = item.videos.length;
-        button.appendChild(count);
-      } else {
-        const name = document.createElement('span');
-        name.className = 'selection-item-name';
-        name.textContent = item.name;
-        button.appendChild(name);
-      }
-
-      button.addEventListener('click', () => {
-        state.selectedId = item.id;
-        state.testIndex = 0;
-        render();
-      });
-      elements.selectionList.appendChild(button);
+      const option = document.createElement('option');
+      option.value = item.id;
+      option.textContent = state.mode === 'seen' ? item.label : item.label + ' — ' + item.name;
+      elements.itemSelect.appendChild(option);
     });
+
+    elements.itemSelect.value = state.selectedId;
   }
 
-  function renderTestButtons() {
+  function populateTestSelect() {
     const selected = currentSelection();
-    elements.testList.replaceChildren();
+    elements.testSelect.replaceChildren();
 
     if (state.mode !== 'seen') {
-      elements.testList.classList.add('is-hidden');
+      elements.testSelectField.classList.add('is-hidden');
       return;
     }
 
-    elements.testList.classList.remove('is-hidden');
-    const label = document.createElement('span');
-    label.className = 'test-list-label';
-    label.textContent = 'Choose a test';
-    elements.testList.appendChild(label);
-
+    elements.testSelectField.classList.remove('is-hidden');
     selected.videos.forEach((videoInfo, index) => {
-      const button = document.createElement('button');
-      button.type = 'button';
-      button.className = 'test-button' + (index === state.testIndex ? ' is-selected' : '');
-      button.textContent = 'Testing ' + (index + 1);
-      button.setAttribute('aria-pressed', index === state.testIndex ? 'true' : 'false');
-      button.addEventListener('click', () => {
-        state.testIndex = index;
-        render();
-      });
-      elements.testList.appendChild(button);
+      const option = document.createElement('option');
+      option.value = String(index);
+      option.textContent = videoInfo.label;
+      elements.testSelect.appendChild(option);
     });
+    elements.testSelect.value = String(state.testIndex);
   }
 
-  function renderVideos() {
+  function renderVideo() {
     const selected = currentSelection();
     const videoInfo = state.mode === 'seen'
       ? selected.videos[state.testIndex]
       : { label: 'Test video', src: selected.src };
 
-    elements.videoHeading.textContent = state.mode === 'seen' ? selected.label : selected.label;
+    elements.videoHeading.textContent = selected.label;
     elements.videoCount.textContent = state.mode === 'seen'
-      ? 'Testing ' + (state.testIndex + 1) + ' of ' + selected.videos.length
+      ? videoInfo.label
       : '1 video';
     elements.selectionDescription.textContent = state.mode === 'seen'
-      ? selected.label + ' — ' + videoInfo.label
+      ? 'One video shown at a time. Use the Testing dropdown to switch clips.'
       : selected.name;
+    elements.controlHint.textContent = state.mode === 'seen'
+      ? selected.videos.length + ' testing videos available for this shape.'
+      : 'One testing video available for this object.';
     elements.videoGrid.replaceChildren();
 
     const card = document.createElement('article');
@@ -137,18 +98,27 @@
   }
 
   function render() {
-    elements.tabs.forEach((tab) => {
-      const active = tab.dataset.mode === state.mode;
-      tab.classList.toggle('is-active', active);
-      tab.setAttribute('aria-selected', active ? 'true' : 'false');
-    });
-    renderList();
-    renderTestButtons();
-    renderVideos();
+    populateItemSelect();
+    populateTestSelect();
+    renderVideo();
   }
 
-  elements.tabs.forEach((tab) => {
-    tab.addEventListener('click', () => selectMode(tab.dataset.mode));
+  elements.modeSelect.addEventListener('change', function () {
+    state.mode = elements.modeSelect.value;
+    state.selectedId = currentItems()[0].id;
+    state.testIndex = 0;
+    render();
+  });
+
+  elements.itemSelect.addEventListener('change', function () {
+    state.selectedId = elements.itemSelect.value;
+    state.testIndex = 0;
+    render();
+  });
+
+  elements.testSelect.addEventListener('change', function () {
+    state.testIndex = Number(elements.testSelect.value);
+    render();
   });
 
   render();
