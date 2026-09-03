@@ -11,9 +11,6 @@
     testSelect: document.getElementById('test-select'),
     testSelectField: document.getElementById('test-select-field'),
     controlHint: document.getElementById('control-hint'),
-    videoHeading: document.getElementById('video-heading'),
-    videoCount: document.getElementById('video-count'),
-    selectionDescription: document.getElementById('selection-description'),
     videoGrid: document.getElementById('video-grid')
   };
 
@@ -65,13 +62,6 @@
       ? selected.videos[state.testIndex]
       : { label: 'Test video', src: selected.src };
 
-    elements.videoHeading.textContent = selected.label;
-    elements.videoCount.textContent = state.mode === 'seen'
-      ? videoInfo.label
-      : '1 video';
-    elements.selectionDescription.textContent = state.mode === 'seen'
-      ? 'One video shown at a time. Use the Testing dropdown to switch clips.'
-      : selected.name;
     elements.controlHint.textContent = state.mode === 'seen'
       ? selected.videos.length + ' testing videos available for this shape.'
       : 'One testing video available for this object.';
@@ -88,12 +78,7 @@
     video.src = videoInfo.src;
     video.setAttribute('aria-label', selected.label + ' ' + videoInfo.label);
 
-    const caption = document.createElement('div');
-    caption.className = 'video-caption';
-    caption.textContent = videoInfo.label;
-
     card.appendChild(video);
-    card.appendChild(caption);
     elements.videoGrid.appendChild(card);
   }
 
