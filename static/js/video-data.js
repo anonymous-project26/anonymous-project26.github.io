@@ -466,229 +466,229 @@ window.DEXCOACH_VIDEOS = {
     {
       "id": "object-01",
       "label": "Object 01",
-      "name": "ZX700 Mf9Pc06uL06",
+      "name": "ZX 700 Sneaker",
       "src": "./static/videos/unseen/object-01.mp4"
     },
     {
       "id": "object-02",
       "label": "Object 02",
-      "name": "Weston No 33 Signature Sausage Tonic 12 Fl Oz",
+      "name": "Sausage Tonic Bottle",
       "src": "./static/videos/unseen/object-02.mp4"
     },
     {
       "id": "object-03",
       "label": "Object 03",
-      "name": "Weisshai Great White Shark",
+      "name": "Great White Shark Toy",
       "src": "./static/videos/unseen/object-03.mp4"
     },
     {
       "id": "object-04",
       "label": "Object 04",
-      "name": "Vtech Cruise Learn Car 25 Years  Car",
+      "name": "Learning Toy Car",
       "src": "./static/videos/unseen/object-04.mp4"
     },
     {
       "id": "object-05",
       "label": "Object 05",
-      "name": "Utana 5 Porcelain Ramekin Large",
+      "name": "Porcelain Ramekin",
       "src": "./static/videos/unseen/object-05.mp4"
     },
     {
       "id": "object-06",
       "label": "Object 06",
-      "name": "Twinlab Premium Creatine Fuel Powder",
+      "name": "Creatine Powder Jar",
       "src": "./static/videos/unseen/object-06.mp4"
     },
     {
       "id": "object-07",
       "label": "Object 07",
-      "name": "Toys R Us Treat Dispenser Smart Puzzle Foobler",
+      "name": "Treat-Dispenser Ball",
       "src": "./static/videos/unseen/object-07.mp4"
     },
     {
       "id": "object-08",
       "label": "Object 08",
-      "name": "Top Paw Dog Bow Bone Ceramic 13 Fl Oz Total",
+      "name": "Ceramic Dog Bowl",
       "src": "./static/videos/unseen/object-08.mp4"
     },
     {
       "id": "object-09",
       "label": "Object 09",
-      "name": "Threshold Porcelain Spoon Rest White",
+      "name": "Porcelain Spoon Rest",
       "src": "./static/videos/unseen/object-09.mp4"
     },
     {
       "id": "object-10",
       "label": "Object 10",
-      "name": "Threshold Porcelain Coffee Mug All Over Bead White",
+      "name": "Porcelain Coffee Mug",
       "src": "./static/videos/unseen/object-10.mp4"
     },
     {
       "id": "object-11",
       "label": "Object 11",
-      "name": "Threshold Bead Cereal Bowl White",
+      "name": "Ceramic Cereal Bowl",
       "src": "./static/videos/unseen/object-11.mp4"
     },
     {
       "id": "object-12",
       "label": "Object 12",
-      "name": "Threshold Basket Natural Finish Fabric Liner Small",
+      "name": "Fabric-Lined Basket",
       "src": "./static/videos/unseen/object-12.mp4"
     },
     {
       "id": "object-13",
       "label": "Object 13",
-      "name": "Thomas Friends Wooden Railway Talking Thomas Z7yi7UFHJRj",
+      "name": "Thomas Toy Train",
       "src": "./static/videos/unseen/object-13.mp4"
     },
     {
       "id": "object-14",
       "label": "Object 14",
-      "name": "Thomas Friends Woodan Railway Henry",
+      "name": "Henry Toy Train",
       "src": "./static/videos/unseen/object-14.mp4"
     },
     {
       "id": "object-15",
       "label": "Object 15",
-      "name": "Target Basket Medium",
+      "name": "Storage Basket",
       "src": "./static/videos/unseen/object-15.mp4"
     },
     {
       "id": "object-16",
       "label": "Object 16",
-      "name": "TOWER TUMBLING",
+      "name": "Tumbling Tower",
       "src": "./static/videos/unseen/object-16.mp4"
     },
     {
       "id": "object-17",
       "label": "Object 17",
-      "name": "Squirtin Barnyard Friends 4pk  Cow",
+      "name": "Cow Toy",
       "src": "./static/videos/unseen/object-17.mp4"
     },
     {
       "id": "object-18",
       "label": "Object 18",
-      "name": "Squirtin Barnyard Friends 4pk  Pig",
+      "name": "Pig Toy",
       "src": "./static/videos/unseen/object-18.mp4"
     },
     {
       "id": "object-19",
       "label": "Object 19",
-      "name": "Squirtin Barnyard Friends 4pk  Chicken",
+      "name": "Chicken Toy",
       "src": "./static/videos/unseen/object-19.mp4"
     },
     {
       "id": "object-20",
       "label": "Object 20",
-      "name": "SpiderMan Titan Hero 12Inch Action Figure Oo1qph4wwiW",
+      "name": "Spider-Man Action Figure",
       "src": "./static/videos/unseen/object-20.mp4"
     },
     {
       "id": "object-21",
       "label": "Object 21",
-      "name": "Sootheze Toasty Orca",
+      "name": "Orca Plush Toy",
       "src": "./static/videos/unseen/object-21.mp4"
     },
     {
       "id": "object-22",
       "label": "Object 22",
-      "name": "Smith Hawken Woven BasketTray Organizer With 3 Compartments 95 X 9 X 13",
+      "name": "Woven Basket Organizer",
       "src": "./static/videos/unseen/object-22.mp4"
     },
     {
       "id": "object-23",
       "label": "Object 23",
-      "name": "Shurtape Tape Purple CP28",
+      "name": "Tape Roll",
       "src": "./static/videos/unseen/object-23.mp4"
     },
     {
       "id": "object-24",
       "label": "Object 24",
-      "name": "Seagate Archive HDD 8 TB Internal Hard Drive SATA 6Gbs 35 ST8000AS0002",
+      "name": "Hard Disk Drive",
       "src": "./static/videos/unseen/object-24.mp4"
     },
     {
       "id": "object-25",
       "label": "Object 25",
-      "name": "Sapota Threshold 4 Ceramic Round Planter Red",
+      "name": "Ceramic Planter",
       "src": "./static/videos/unseen/object-25.mp4"
     },
     {
       "id": "object-26",
       "label": "Object 26",
-      "name": "STACKING RING",
+      "name": "Stacking Ring Toy",
       "src": "./static/videos/unseen/object-26.mp4"
     },
     {
       "id": "object-27",
       "label": "Object 27",
-      "name": "SORTING BUS  Center Bus",
+      "name": "Shape-Sorting Bus",
       "src": "./static/videos/unseen/object-27.mp4"
     },
     {
       "id": "object-28",
       "label": "Object 28",
-      "name": "SNAIL MEASURING TAPE",
+      "name": "Snail Tape Measure",
       "src": "./static/videos/unseen/object-28.mp4"
     },
     {
       "id": "object-29",
       "label": "Object 29",
-      "name": "SCHOOL BUS",
+      "name": "School Bus Toy",
       "src": "./static/videos/unseen/object-29.mp4"
     },
     {
       "id": "object-30",
       "label": "Object 30",
-      "name": "Room Essentials Fabric Cube Lavender",
+      "name": "Fabric Storage Cube",
       "src": "./static/videos/unseen/object-30.mp4"
     },
     {
       "id": "object-31",
       "label": "Object 31",
-      "name": "Phillips Milk Of Magnesia Saline Laxative Liquid Original",
+      "name": "Medicine Bottle",
       "src": "./static/videos/unseen/object-31.mp4"
     },
     {
       "id": "object-32",
       "label": "Object 32",
-      "name": "PEEKABOO ROLLER",
+      "name": "Peekaboo Roller",
       "src": "./static/videos/unseen/object-32.mp4"
     },
     {
       "id": "object-33",
       "label": "Object 33",
-      "name": "Olive Kids Robots Pencil Case",
+      "name": "Pencil Case",
       "src": "./static/videos/unseen/object-33.mp4"
     },
     {
       "id": "object-34",
       "label": "Object 34",
-      "name": "OXO Cookie Spatula",
+      "name": "Cookie Spatula",
       "src": "./static/videos/unseen/object-34.mp4"
     },
     {
       "id": "object-35",
       "label": "Object 35",
-      "name": "Kong Puppy Teething Rubber Small Pink",
+      "name": "Puppy Teething Toy",
       "src": "./static/videos/unseen/object-35.mp4"
     },
     {
       "id": "object-36",
       "label": "Object 36",
-      "name": "Ecoforms Plant Container QP Turquoise",
+      "name": "Plant Pot",
       "src": "./static/videos/unseen/object-36.mp4"
     },
     {
       "id": "object-37",
       "label": "Object 37",
-      "name": "Cole Hardware Mini Honey Dipper",
+      "name": "Honey Dipper",
       "src": "./static/videos/unseen/object-37.mp4"
     },
     {
       "id": "object-38",
       "label": "Object 38",
-      "name": "3D Dollhouse Lamp",
+      "name": "Dollhouse Lamp",
       "src": "./static/videos/unseen/object-38.mp4"
     }
   ]
