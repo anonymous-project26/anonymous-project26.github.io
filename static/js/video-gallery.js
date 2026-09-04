@@ -8,9 +8,7 @@
     modeSelect: document.getElementById('mode-select'),
     itemSelect: document.getElementById('item-select'),
     itemSelectLabel: document.getElementById('item-select-label'),
-    testSelect: document.getElementById('test-select'),
-    testSelectField: document.getElementById('test-select-field'),
-    controlHint: document.getElementById('control-hint'),
+    randomButton: document.getElementById('random-button'),
     videoGrid: document.getElementById('video-grid')
   };
 
@@ -20,6 +18,19 @@
 
   function currentSelection() {
     return currentItems().find((item) => item.id === state.selectedId) || currentItems()[0];
+  }
+
+  function chooseRandomTest() {
+    const selected = currentSelection();
+    if (state.mode === 'seen' && selected.videos.length > 1) {
+      let nextIndex = Math.floor(Math.random() * selected.videos.length);
+      if (nextIndex === state.testIndex) {
+        nextIndex = (nextIndex + 1) % selected.videos.length;
+      }
+      state.testIndex = nextIndex;
+    } else {
+      state.testIndex = 0;
+    }
   }
 
   function populateItemSelect() {
@@ -37,34 +48,12 @@
     elements.itemSelect.value = state.selectedId;
   }
 
-  function populateTestSelect() {
-    const selected = currentSelection();
-    elements.testSelect.replaceChildren();
-
-    if (state.mode !== 'seen') {
-      elements.testSelectField.classList.add('is-hidden');
-      return;
-    }
-
-    elements.testSelectField.classList.remove('is-hidden');
-    selected.videos.forEach((videoInfo, index) => {
-      const option = document.createElement('option');
-      option.value = String(index);
-      option.textContent = videoInfo.label;
-      elements.testSelect.appendChild(option);
-    });
-    elements.testSelect.value = String(state.testIndex);
-  }
-
   function renderVideo() {
     const selected = currentSelection();
     const videoInfo = state.mode === 'seen'
       ? selected.videos[state.testIndex]
       : { label: 'Test video', src: selected.src };
 
-    elements.controlHint.textContent = state.mode === 'seen'
-      ? selected.videos.length + ' testing videos available for this shape.'
-      : 'One testing video available for this object.';
     elements.videoGrid.replaceChildren();
 
     const card = document.createElement('article');
@@ -84,27 +73,27 @@
 
   function render() {
     populateItemSelect();
-    populateTestSelect();
     renderVideo();
   }
 
   elements.modeSelect.addEventListener('change', function () {
     state.mode = elements.modeSelect.value;
     state.selectedId = currentItems()[0].id;
-    state.testIndex = 0;
+    chooseRandomTest();
     render();
   });
 
   elements.itemSelect.addEventListener('change', function () {
     state.selectedId = elements.itemSelect.value;
-    state.testIndex = 0;
+    chooseRandomTest();
     render();
   });
 
-  elements.testSelect.addEventListener('change', function () {
-    state.testIndex = Number(elements.testSelect.value);
-    render();
+  elements.randomButton.addEventListener('click', function () {
+    chooseRandomTest();
+    renderVideo();
   });
 
+  chooseRandomTest();
   render();
 }());

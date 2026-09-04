@@ -164,9 +164,14 @@ body {
 }
 
 body {
+  font-family: "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
   color: var(--dexcoach-ink);
   background: #fbfcff;
   overflow-x: hidden;
+}
+
+body, button, select, input, textarea {
+  font-family: "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
 }
 
 .navbar {
@@ -212,6 +217,7 @@ body {
   line-height: 1.12;
   letter-spacing: -0.065em;
   overflow-wrap: normal;
+  font-family: inherit;
 }
 
 .hero-copy {
@@ -325,11 +331,16 @@ body {
 
 .video-section { padding-top: 4rem; }
 
-.controls-column { align-self: flex-start; }
+.video-section .columns { align-items: stretch; }
+.video-section .columns > .column { display: flex; flex-direction: column; }
+.controls-column { align-self: stretch; }
 
 .control-panel {
-  position: sticky;
-  top: 1.5rem;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
   padding: 1.6rem;
   border: 1px solid #e4e8f1;
   border-radius: 18px;
@@ -342,6 +353,20 @@ body {
 .control-panel .select { width: 100%; }
 .control-panel .select select { width: 100%; max-width: 100%; }
 .control-panel select { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+.random-button {
+  margin-top: 0.4rem;
+  border: 0;
+  color: white;
+  background: var(--dexcoach-accent);
+  font-weight: 800;
+}
+
+.random-button:hover,
+.random-button:focus {
+  color: white;
+  background: #5142c0;
+}
 
 .control-hint {
   margin: 1.1rem 0 0;
@@ -424,10 +449,19 @@ body {
 .selection-description { margin-top: -0.8rem; margin-bottom: 1.5rem; }
 
 .video-grid {
+  display: flex;
+  flex: 1;
+  width: 100%;
+  min-height: clamp(280px, 34vw, 520px);
   max-width: 900px;
 }
 
 .video-card {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
   overflow: hidden;
   border: 1px solid #e4e8f1;
   border-radius: 14px;
@@ -437,7 +471,9 @@ body {
 
 .test-video {
   display: block;
+  flex: 1;
   width: 100%;
+  height: 100%;
   aspect-ratio: 16 / 9;
   background: #111827;
   object-fit: contain;
