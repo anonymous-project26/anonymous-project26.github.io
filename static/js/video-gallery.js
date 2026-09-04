@@ -8,7 +8,6 @@
     modeSelect: document.getElementById('mode-select'),
     itemSelect: document.getElementById('item-select'),
     itemSelectLabel: document.getElementById('item-select-label'),
-    randomButton: document.getElementById('random-button'),
     videoGrid: document.getElementById('video-grid')
   };
 
@@ -87,11 +86,6 @@
     state.selectedId = elements.itemSelect.value;
     chooseRandomTest();
     render();
-  });
-
-  elements.randomButton.addEventListener('click', function () {
-    chooseRandomTest();
-    renderVideo();
   });
 
   chooseRandomTest();

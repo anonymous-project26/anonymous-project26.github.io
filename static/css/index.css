@@ -354,20 +354,6 @@ body, button, select, input, textarea {
 .control-panel .select select { width: 100%; max-width: 100%; }
 .control-panel select { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
-.random-button {
-  margin-top: 0.4rem;
-  border: 0;
-  color: white;
-  background: var(--dexcoach-accent);
-  font-weight: 800;
-}
-
-.random-button:hover,
-.random-button:focus {
-  color: white;
-  background: #5142c0;
-}
-
 .control-hint {
   margin: 1.1rem 0 0;
   color: #8b94a8;
